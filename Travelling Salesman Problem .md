@@ -22,14 +22,44 @@ To write a Python program to find the shortest possible route that visits every 
 **Step 7**: End the program.
 
 ## PYTHON PROGRAM
-
 ```
-ENTER YOUR CODE HERE
+from sys import maxsize
+from itertools import permutations
+V = 4
+def travellingSalesmanProblem(graph, s):
+	vertex = []
+	for i in range(V):
+		if i != s:
+			vertex.append(i)
+			
+	min_path=maxsize
+	next_permutation=permutations(vertex)
+	for i in next_permutation:
+		current_pathweight = 0
+		
+		k=s
+		for j in i:
+		    current_pathweight+=graph[k][j]
+		    k=j
+		current_pathweight+=graph[k][s]
+		
+		min_path=min(min_path, current_pathweight)
+		
+	return min_path
+
+if __name__ == "__main__":
+
+	# matrix representation of graph
+	graph = [[0, 10, 15, 20], [10, 0, 35, 25],
+			[15, 35, 0, 30], [20, 25, 30, 0]]
+	s = int(input())
+	print(travellingSalesmanProblem(graph, s))
+
 ```
 
 ## OUTPUT
-```
-```
+<img width="315" height="133" alt="image" src="https://github.com/user-attachments/assets/106b9930-1f2a-4afd-94fa-ee2c729f5ecf" />
 
-##RESULT
+## RESULT
+Thus, the Python program to solve the Travelling Salesman Problem using brute-force method was successfully executed and the shortest route was determined.
 
